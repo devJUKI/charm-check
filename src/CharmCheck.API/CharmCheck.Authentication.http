@@ -1,0 +1,11 @@
+@CharmCheck.API_HostAddress = http://localhost:5172
+
+GET {{CharmCheck.API_HostAddress}}/register/
+Accept: application/json
+
+{
+  "email": "string",
+  "password": "string"
+}
+
+###

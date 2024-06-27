@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{31F0FE8E-97F1-4BEC-B802-57968219EFC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CharmCheck.API", "src\CharmCheck.API\CharmCheck.API.csproj", "{4281C8EA-7C0A-4BBA-A957-9E1DBAC22B35}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CharmCheck.Domain", "src\CharmCheck.Domain\CharmCheck.Domain.csproj", "{458A9D31-EF59-4ECC-A10E-CCF2FADAF9E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CharmCheck.Application", "src\CharmCheck.Application\CharmCheck.Application.csproj", "{43082921-F639-4F60-9F2C-478DCAEEC8B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CharmCheck.Infrastructure", "src\CharmCheck.Infrastructure\CharmCheck.Infrastructure.csproj", "{CCF3B7FC-EE60-48AF-8F08-A2B2BA0C6DC8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4281C8EA-7C0A-4BBA-A957-9E1DBAC22B35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4281C8EA-7C0A-4BBA-A957-9E1DBAC22B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4281C8EA-7C0A-4BBA-A957-9E1DBAC22B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4281C8EA-7C0A-4BBA-A957-9E1DBAC22B35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{458A9D31-EF59-4ECC-A10E-CCF2FADAF9E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{458A9D31-EF59-4ECC-A10E-CCF2FADAF9E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{458A9D31-EF59-4ECC-A10E-CCF2FADAF9E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{458A9D31-EF59-4ECC-A10E-CCF2FADAF9E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43082921-F639-4F60-9F2C-478DCAEEC8B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43082921-F639-4F60-9F2C-478DCAEEC8B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43082921-F639-4F60-9F2C-478DCAEEC8B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43082921-F639-4F60-9F2C-478DCAEEC8B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF3B7FC-EE60-48AF-8F08-A2B2BA0C6DC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF3B7FC-EE60-48AF-8F08-A2B2BA0C6DC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF3B7FC-EE60-48AF-8F08-A2B2BA0C6DC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF3B7FC-EE60-48AF-8F08-A2B2BA0C6DC8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4281C8EA-7C0A-4BBA-A957-9E1DBAC22B35} = {31F0FE8E-97F1-4BEC-B802-57968219EFC3}
+		{458A9D31-EF59-4ECC-A10E-CCF2FADAF9E6} = {31F0FE8E-97F1-4BEC-B802-57968219EFC3}
+		{43082921-F639-4F60-9F2C-478DCAEEC8B4} = {31F0FE8E-97F1-4BEC-B802-57968219EFC3}
+		{CCF3B7FC-EE60-48AF-8F08-A2B2BA0C6DC8} = {31F0FE8E-97F1-4BEC-B802-57968219EFC3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB941387-DACF-4948-8C62-EE0013F85429}
+	EndGlobalSection
+EndGlobal
