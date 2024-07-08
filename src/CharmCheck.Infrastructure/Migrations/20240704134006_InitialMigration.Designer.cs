@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharmCheck.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240616172745_InitialMigration")]
+    [Migration("20240704134006_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -286,7 +286,7 @@ namespace CharmCheck.Infrastructure.Migrations
                     b.HasOne("CharmCheck.Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -297,13 +297,13 @@ namespace CharmCheck.Infrastructure.Migrations
                     b.HasOne("CharmCheck.Domain.Entities.ProfilePhoto", "ProfileImage")
                         .WithMany()
                         .HasForeignKey("ProfileImageId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CharmCheck.Domain.Entities.User", "Reviewer")
                         .WithMany()
                         .HasForeignKey("ReviewerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ProfileImage");

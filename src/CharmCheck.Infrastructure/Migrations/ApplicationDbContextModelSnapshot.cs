@@ -283,7 +283,7 @@ namespace CharmCheck.Infrastructure.Migrations
                     b.HasOne("CharmCheck.Domain.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -294,13 +294,13 @@ namespace CharmCheck.Infrastructure.Migrations
                     b.HasOne("CharmCheck.Domain.Entities.ProfilePhoto", "ProfileImage")
                         .WithMany()
                         .HasForeignKey("ProfileImageId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("CharmCheck.Domain.Entities.User", "Reviewer")
                         .WithMany()
                         .HasForeignKey("ReviewerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ProfileImage");

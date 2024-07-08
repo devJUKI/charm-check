@@ -61,7 +61,7 @@ internal class GetPhotosAnalyticsQueryHandler : IRequestHandler<GetPhotosAnalyti
         var output = result
             .Select(r => new PhotoAnalyticsEntry(
                 r.Key,
-                $"{request.ImageBaseUrl}{r.Value.Filename}",
+                $"{request.ImageBaseUrl}/{r.Value.Filename}",
                 r.Value.AgeGroups))
             .ToList();
 
