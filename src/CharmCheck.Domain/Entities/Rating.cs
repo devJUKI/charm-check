@@ -8,4 +8,5 @@ public class Rating
     public ProfilePhoto ProfileImage { get; set; } = null!;
     public string ProfileImageId { get; set; } = null!;
     public int PhotoRating { get; set; }
+    public DateTime RatingDate { get; set; }
 }

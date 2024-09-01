@@ -8,6 +8,7 @@ public class ApplicationDbContext : IdentityDbContext<User>
 {
     public DbSet<ProfilePhoto> Photos { get; set; }
     public DbSet<Rating> Ratings { get; set; }
+    public DbSet<RatingsVisit> RatingsVisits { get; set; }
 
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {

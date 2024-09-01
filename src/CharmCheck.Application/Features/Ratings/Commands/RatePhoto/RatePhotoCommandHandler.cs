@@ -22,7 +22,8 @@ internal class RatePhotoCommandHandler : IRequestHandler<RatePhotoCommand, Resul
         {
             PhotoRating = request.PhotoRating,
             ProfileImageId = new(request.PhotoId),
-            ReviewerId = request.UserId
+            ReviewerId = request.UserId,
+            RatingDate = DateTime.UtcNow
         };
 
         await _ratingRepository.AddAsync(rating);

@@ -10,10 +10,14 @@ namespace CharmCheck.Application.Features.Ratings.Queries.GetPhotosAnalytics;
 internal class GetPhotosAnalyticsQueryHandler : IRequestHandler<GetPhotosAnalyticsQuery, Result<List<PhotoAnalyticsEntry>>>
 {
     private readonly IGenericRepository<Rating> _ratingRepository;
+    private readonly IGenericRepository<RatingsVisit> _ratingsVisitRepository;
 
-    public GetPhotosAnalyticsQueryHandler(IGenericRepository<Rating> ratingRepository)
+    public GetPhotosAnalyticsQueryHandler(
+        IGenericRepository<Rating> ratingRepository,
+        IGenericRepository<RatingsVisit> ratingsVisitRepository)
     {
         _ratingRepository = ratingRepository;
+        _ratingsVisitRepository = ratingsVisitRepository;
     }
 
     public async Task<Result<List<PhotoAnalyticsEntry>>> Handle(GetPhotosAnalyticsQuery request, CancellationToken cancellationToken)
@@ -64,6 +68,15 @@ internal class GetPhotosAnalyticsQueryHandler : IRequestHandler<GetPhotosAnalyti
                 $"{request.ImageBaseUrl}/{r.Value.Filename}",
                 r.Value.AgeGroups))
             .ToList();
+
+        var userVisit = await _ratingsVisitRepository
+            .GetSet()
+            .SingleAsync(v => v.UserId == request.UserId, cancellationToken);
+
+        userVisit.LastVisit = DateTime.UtcNow;
+        _ratingsVisitRepository.Update(userVisit);
+
+        await _ratingsVisitRepository.SaveChangesAsync();
 
         return output;
     }

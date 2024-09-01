@@ -12,12 +12,18 @@ internal class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result<
     private readonly UserManager<User> _userManager;
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IGenericRepository<User> _userRepository;
+    private readonly IGenericRepository<RatingsVisit> _ratingsVisitRepository;
 
-    public RegisterCommandHandler(UserManager<User> userManager, IJwtTokenGenerator jwtTokenGenerator, IGenericRepository<User> userRepository)
+    public RegisterCommandHandler(
+        UserManager<User> userManager,
+        IJwtTokenGenerator jwtTokenGenerator,
+        IGenericRepository<User> userRepository,
+        IGenericRepository<RatingsVisit> ratingsVisitRepository)
     {
         _userManager = userManager;
         _jwtTokenGenerator = jwtTokenGenerator;
         _userRepository = userRepository;
+        _ratingsVisitRepository = ratingsVisitRepository;
     }
 
     public async Task<Result<string>> Handle(RegisterCommand request, CancellationToken cancellationToken)
@@ -33,14 +39,24 @@ internal class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result<
 
         if (result.Succeeded)
         {
+
             var user = _userRepository
                 .GetSet()
                 .Single(u => u.Email!.ToLower() == request.Email.ToLower());
 
             string token = _jwtTokenGenerator.GenerateToken(user.Id, []);
+
+            var lastVisitEntry = new RatingsVisit
+            {
+                UserId = user.Id,
+                LastVisit = DateTime.UtcNow
+            };
+
+            await _ratingsVisitRepository.AddAsync(lastVisitEntry);
+
             return Result.Success(token);
         }
-        
+
         string errorMessage = result
             .Errors
             .First()

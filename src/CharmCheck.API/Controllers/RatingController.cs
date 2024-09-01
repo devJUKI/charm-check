@@ -1,6 +1,7 @@
 ﻿using CharmCheck.Application.Authentication;
 using CharmCheck.Application.DTOs;
 using CharmCheck.Application.Features.Ratings.Commands.RatePhoto;
+using CharmCheck.Application.Features.Ratings.Queries.GetNewRatingsCount;
 using CharmCheck.Application.Features.Ratings.Queries.GetPhotosAnalytics;
 using CharmCheck.Application.Features.Ratings.Queries.GetRatePhoto;
 using CharmCheck.Domain.Extensions;
@@ -65,6 +66,23 @@ namespace CharmCheck.API.Controllers
 
             var analytics = result.Value;
             return Ok(new { analytics });
+        }
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [HttpGet("NewRatingsCount")]
+        public async Task<IActionResult> GetNewRatingsCount()
+        {
+            var userId = User.GetUserId();
+            var query = new GetNewRatingsCountQuery(userId);
+            var result = await _sender.Send(query);
+
+            if (result.IsFailure)
+            {
+                return BadRequest(result.Error);
+            }
+
+            var count = result.Value;
+            return Ok(new { count });
         }
     }
 }
